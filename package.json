@@ -16,6 +16,7 @@
     "react-hook-form": "^7.53.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/react": "^18.3.5",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
