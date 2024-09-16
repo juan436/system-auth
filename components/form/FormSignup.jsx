@@ -50,7 +50,7 @@ export const FormSignup = () => {
                 </form>
                 <div className="mt-4 text-center text-gray-400">
                     ¿Ya estás registrado?{' '}
-                    <Link href="/login" className="text-blue-400 hover:text-blue-300">
+                    <Link href="/auth/login" className="text-blue-400 hover:text-blue-300">
                         Ingresa
                     </Link>
                 </div>

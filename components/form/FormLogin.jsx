@@ -31,12 +31,12 @@ export const FormLogin = () => {
                 </form>
                 <div className="mt-4 text-center text-gray-400">
                     ¿No tienes una cuenta?{' '}
-                    <Link href="/signup" className="text-blue-400 hover:text-blue-300">
+                    <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300">
                         Regístrate
                     </Link>
                 </div>
                 <div className="mt-2 text-center">
-                    <Link href="/forgot-password" className="text-sm text-gray-400 hover:text-gray-300">
+                    <Link href="/auth/forgot-password" className="text-sm text-gray-400 hover:text-gray-300">
                         ¿Olvidaste tu contraseña?
                     </Link>
                 </div>
