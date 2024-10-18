@@ -1,16 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const FormSignup = () => {
+export const FormSignup = ({ reactHookForm, onSubmit }) => {
+    const { register, handleSubmit } = reactHookForm;
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-800">
             <div className="w-full max-w-md p-8">
-                <form className="space-y-4" action="/api/signup" method="POST">
+                <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-2xl font-bold text-center mb-6 text-white">Registro</h2>
                     <div>
                         <input
                             type="text"
-                            name="nombre"
+                            {...register('username')} 
                             placeholder="Nombre"
                             required
                             className="w-full px-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
@@ -19,7 +21,7 @@ export const FormSignup = () => {
                     <div>
                         <input
                             type="email"
-                            name="email"
+                            {...register('email')}
                             placeholder="Email"
                             required
                             className="w-full px-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
@@ -28,7 +30,7 @@ export const FormSignup = () => {
                     <div>
                         <input
                             type="password"
-                            name="password"
+                            {...register('password')}
                             placeholder="Contraseña"
                             required
                             minLength="8"
@@ -38,7 +40,7 @@ export const FormSignup = () => {
                     <div>
                         <input
                             type="password"
-                            name="confirmarPassword"
+                            {...register('confirmarPassword')}
                             placeholder="Confirmar Contraseña"
                             required
                             className="w-full px-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
