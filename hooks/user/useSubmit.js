@@ -1,11 +1,10 @@
 import asApi from '@/apiAxios/asApi';
-import { useSnackMessages } from '@/hooks/useSnackMessage'; // Importa el hook
+import { useSnackMessages } from '@/hooks/useSnackMessage';
 
 const useSubmit = () => {
     const { msgMostrar } = useSnackMessages();
 
     const onSubmit = async (form) => {
-        // Validar que las contraseñas coincidan
         if (form.password !== form.confirmarPassword) {
             console.error('Las contraseñas no coinciden');
             msgMostrar('Las contraseñas no coinciden', 'error');
@@ -26,8 +25,9 @@ const useSubmit = () => {
             console.log(data.message);
             msgMostrar(data.message, 'success');
         } catch (error) {
-            console.error('Error en la solicitud:', error.response?.data || error.message);
-            msgMostrar('Error en la solicitud: ' + (error.response?.data || error.message), 'error');
+            const errorMessage = error.response?.data?.message || error.message || 'Error durante el proceso, vuelva a intentarlo';
+            console.error('Error en la solicitud:', errorMessage);
+            msgMostrar('Error en la solicitud: ' + errorMessage, 'error');
         }
     };
 

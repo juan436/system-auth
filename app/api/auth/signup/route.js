@@ -8,6 +8,31 @@ export async function POST(req) {
     await db.connect();
 
     try {
+        // Verificar si el correo electrónico ya existe
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return new Response(JSON.stringify({ 
+                message: 'El correo electrónico ya está en uso.', 
+                variant: 'error' 
+            }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        // Verificar si el nombre de usuario ya existe
+        const existingUsername = await User.findOne({ username });
+        if (existingUsername) {
+            return new Response(JSON.stringify({ 
+                message: 'El nombre de usuario ya está en uso.', 
+                variant: 'error' 
+            }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        // Crear el nuevo usuario
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             username,
@@ -31,7 +56,7 @@ export async function POST(req) {
             error: error.message, 
             variant: 'error' 
         }), {
-            status: 400,
+            status: 500,
             headers: { 'Content-Type': 'application/json' },
         });
     }

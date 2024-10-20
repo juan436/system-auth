@@ -1,12 +1,13 @@
-// components/form/FormForgotPassword.jsx
 import React from 'react';
 import Link from 'next/link';
 
-export const FormForgotPassword = () => {
+export const FormForgotPassword = ({ reactHookForm, onSubmit }) => {
+    const { register, handleSubmit } = reactHookForm;
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-800">
             <div className="w-full max-w-md p-8">
-                <form className="space-y-4" action="/api/forgot-password" method="POST">
+                <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-2xl font-bold text-center mb-6 text-white">Recuperar Contraseña</h2>
                     <p className="text-gray-400 text-center mb-4">
                         Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.
@@ -17,6 +18,7 @@ export const FormForgotPassword = () => {
                             name="email"
                             placeholder="Email"
                             required
+                            {...register('email')}
                             className="w-full px-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
                         />
                     </div>

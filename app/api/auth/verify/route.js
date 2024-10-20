@@ -24,7 +24,6 @@ export async function GET(req) {
         user.isVerified = true;
         await user.save();
 
-        // Redirige a la página principal usando una URL absoluta
         return new Response(null, {
             status: 302,
             headers: { Location: 'http://localhost:3000/auth/verify' },
