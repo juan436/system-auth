@@ -6,7 +6,7 @@ import asApi from '@/apiAxios/asApi';
 import { useSnackMessages } from '@/hooks/useSnackMessage';
 import FormResetPassword from '@/components/form/FormResetPassword';
 
-function ResetPasswordPage() {
+function ResetPasswordContent() {
     const reactHookForm = useForm();
     const { msgMostrar } = useSnackMessages();
     const router = useRouter();
@@ -34,8 +34,14 @@ function ResetPasswordPage() {
     };
 
     return (
+        <FormResetPassword reactHookForm={reactHookForm} onSubmit={onSubmit} />
+    );
+}
+
+function ResetPasswordPage() {
+    return (
         <Suspense fallback={<div>Cargando...</div>}>
-            <FormResetPassword reactHookForm={reactHookForm} onSubmit={onSubmit} />
+            <ResetPasswordContent />
         </Suspense>
     );
 }
