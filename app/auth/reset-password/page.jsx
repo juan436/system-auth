@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter, useSearchParams } from 'next/navigation';
 import asApi from '@/apiAxios/asApi';
@@ -34,7 +34,9 @@ function ResetPasswordPage() {
     };
 
     return (
-        <FormResetPassword reactHookForm={reactHookForm} onSubmit={onSubmit} />
+        <Suspense fallback={<div>Cargando...</div>}>
+            <FormResetPassword reactHookForm={reactHookForm} onSubmit={onSubmit} />
+        </Suspense>
     );
 }
 
