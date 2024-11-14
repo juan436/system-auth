@@ -44,4 +44,7 @@ const CustomSnackbar = React.forwardRef((props, ref) => {
   );
 });
 
+// Agregar displayName
+CustomSnackbar.displayName = 'CustomSnackbar';
+
 export default CustomSnackbar;
