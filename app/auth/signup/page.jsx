@@ -10,7 +10,7 @@ function SignupPage() {
     const reactHookForm = useForm();
 
     return (
-        <FormSignup reactHookForm={reactHookForm} onSubmit={onSubmit} />
+        <FormSignup reactHookForm={reactHookForm} onSubmit={onSubmit} /> // Asegúrate de que onSubmit se pase correctamente
     );
 }
 

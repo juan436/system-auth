@@ -5,6 +5,8 @@ const useSubmit = () => {
     const { msgMostrar } = useSnackMessages();
 
     const onSubmit = async (form) => {
+        console.log('Formulario enviado:', form);
+
         if (form.password !== form.confirmarPassword) {
             console.error('Las contraseñas no coinciden');
             msgMostrar('Las contraseñas no coinciden', 'error');
