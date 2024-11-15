@@ -14,11 +14,7 @@ const useSubmit = () => {
         const { confirmarPassword, ...userData } = form;
 
         try {
-            const { data } = await asApi({
-                url: '/auth/signup',
-                method: 'POST',
-                data: userData
-            });
+            const { data } = await asApi.post('/auth/signup', userData); // Asegúrate de que la ruta sea correcta
 
             if (!data.message) throw new Error('Error durante el proceso, vuelva a intentarlo');
 
