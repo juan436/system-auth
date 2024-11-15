@@ -26,7 +26,7 @@ export async function GET(req) {
 
         return new Response(null, {
             status: 302,
-            headers: { Location: 'http://localhost:3000/auth/verify' },
+            headers: { Location: `${process.env.NEXT_PUBLIC_APP_URL}/auth/verify` },
         });
     } catch (error) {
         return new Response('Token inválido o expirado', { status: 400 });
