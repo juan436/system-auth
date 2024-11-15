@@ -6,11 +6,11 @@ import { FormSignup } from '@/components/form';
 import useSubmit from '@/hooks/user/useSubmit';
 
 function SignupPage() {
-    const { onSubmit } = useSubmit();
     const reactHookForm = useForm();
+    const { onSubmit } = useSubmit(reactHookForm.reset);
 
     return (
-        <FormSignup reactHookForm={reactHookForm} onSubmit={onSubmit} /> // Asegúrate de que onSubmit se pase correctamente
+        <FormSignup reactHookForm={reactHookForm} onSubmit={onSubmit} />
     );
 }
 

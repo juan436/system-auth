@@ -1,7 +1,7 @@
 import asApi from '@/apiAxios/asApi';
 import { useSnackMessages } from '@/hooks/useSnackMessage';
 
-const useSubmit = () => {
+const useSubmit = (reset) => {
     const { msgMostrar } = useSnackMessages();
 
     const onSubmit = async (form) => {
@@ -16,12 +16,13 @@ const useSubmit = () => {
         const { confirmarPassword, ...userData } = form;
 
         try {
-            const { data } = await asApi.post('/auth/signup', userData); // Asegúrate de que la ruta sea correcta
+            const { data } = await asApi.post('/auth/signup', userData); 
 
             if (!data.message) throw new Error('Error durante el proceso, vuelva a intentarlo');
 
             console.log(data.message);
             msgMostrar(data.message, 'success');
+            reset();
         } catch (error) {
             const errorMessage = error.response?.data?.message || error.message || 'Error durante el proceso, vuelva a intentarlo';
             console.error('Error en la solicitud:', errorMessage);
